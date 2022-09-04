@@ -5,8 +5,6 @@ import styles from './Button.module.scss';
 const cx = classNames.bind(styles);
 
 function Button({
-    to,
-    href,
     primary = false,
     outline = false,
     text = false,
@@ -14,6 +12,8 @@ function Button({
     disabled = false,
     small = false,
     large = false,
+    to,
+    href,
     children,
     className,
     leftIcon,
@@ -45,6 +45,7 @@ function Button({
         props.href = href;
         Comp = 'a';
     }
+
     const classes = cx('wrapper', {
         [className]: className,
         primary,
@@ -54,9 +55,9 @@ function Button({
         disabled,
         small,
         large,
-    }); // primary được truyền vào Object và được viết dưới dạng Enhanced object literals.
+    }); // các props được truyền vào Object và được viết dưới dạng Enhanced object literals.
     return (
-        <Comp className={classes}>
+        <Comp className={classes} {...props}>
             {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
             <span className={cx('title')}>{children}</span>
             {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}

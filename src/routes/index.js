@@ -5,6 +5,7 @@ import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
+import Feedback from '~/pages/Feedback';
 
 // Route này quản lý các trang không cần đăng nhập vẫn truy cập được
 const publicRoutes = [
@@ -15,6 +16,7 @@ const publicRoutes = [
     { path: '/profile', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnlyDefault },
     { path: '/search', component: Search, layout: null },
+    { path: '/feedback', component: Feedback, layout: null },
 ];
 
 // Route này quản lý các trang cần phải đăng nhập vẫn truy cập được. Nếu Click vào thì sẽ bị điều hướng đến trang đăng ký

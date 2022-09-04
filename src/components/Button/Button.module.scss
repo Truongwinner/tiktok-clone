@@ -10,6 +10,8 @@
     background-color: var(--white);
     border: 1px solid transparent;
     user-select: none; // không select (bôi đen) được chữ của button
+    color: var(--text-color);
+    text-decoration: none;
 
     + .wrapper {
         margin-left: 8px;
@@ -25,6 +27,12 @@
 .icon + .title,
 .title + .icon {
     margin-left: 8px;
+}
+
+.icon {
+    display: inline-flex;
+    width: 24px;
+    text-align: center;
 }
 
 // Button types
