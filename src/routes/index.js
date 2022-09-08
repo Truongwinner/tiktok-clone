@@ -13,7 +13,7 @@ const publicRoutes = [
     // tương ứng
     { path: '/', component: Home },
     { path: '/following', component: Following },
-    { path: '/profile', component: Profile },
+    { path: '/@:nickname', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnlyDefault },
     { path: '/search', component: Search, layout: null },
     { path: '/feedback', component: Feedback, layout: null },

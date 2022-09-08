@@ -3,6 +3,8 @@
     align-content: center;
     padding: 6px 16px;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--black);
 
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
