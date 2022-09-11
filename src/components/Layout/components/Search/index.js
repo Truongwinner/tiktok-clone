@@ -1,10 +1,15 @@
+import React from 'react';
 import { useEffect, useState, useRef } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
+
+import * as searchService from '~/apiServices/searchService';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/icons';
+import { useDebounce } from '~/hooks';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Search.module.scss';
 
@@ -16,29 +21,27 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchValue, 500);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]); // Để khi người dùng xóa hết ký tự ở ô search thì không hiển thị KQ tìm kiếm nữa
             return;
         }
 
+        const fetchApi = async () => {
+            setLoading(false);
+            const result = await searchService.search(debounced);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
         setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            // encodeURIComponent(searchValue) dùng để mã hóa ký tự do người dùng nhập vào tránh trùng các ký tự như
-            // '&', '=' hoặc '?' gây lỗi cho chuỗi ulr API (Query Parameter)
-
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
-    }, [searchValue]);
+        // Dùng axios để thay thế cho fetch. Link tham khảo (https://github.com/axios/axios)
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchValue('');
