@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react'; // tham khảo cách sử dụng Tippy https://github.com/atomiks/tippyjs-react
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
 import Search from '../Search';
 import Button from '~/components/Button';
@@ -21,6 +22,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import { MessageIcon, UploadIcon, InboxIcon } from '~/components/icons';
+import routesConfig from '~/config/routes';
 
 // Tham khảo cách dùng classNames.bind(style) ở đường dẫn bên dưới
 //https://www.tabnine.com/code/javascript/functions/classnames/ClassNamesBind/bind
@@ -96,9 +98,11 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
-                    <img src={images.logo} alt={'tiktok'} />
-                </div>
+                <Link to={routesConfig.home}>
+                    <div className={cx('logo')}>
+                        <img src={images.logo} alt={'tiktok'} />
+                    </div>
+                </Link>
 
                 <Search />
 
@@ -137,8 +141,8 @@ function Header() {
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/be22b8593ea95c8835d47f4b5309ec16~c5_100x100.jpeg?x-expires=1662480000&x-signature=uViEUoKjwEpgmGP1jk5jnRXtln0%3D"
                                 className={cx('user-avatar')}
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/be22b8593ea95c8835d47f4b5309ec16~c5_100x100.jpeg?x-expires=1662480000&x-signature=uViEUoKjwEpgmGP1jk5jnRXtln0%3D"
                                 alt="Nguyen Van A"
                                 fallback="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ae52c1bfaab10cd9d693f9de33e1e60a~c5_100x100.jpeg?x-expires=1662771600&x-signature=vsm8jUmukGYcxko7hZrOJSUxPEE%3D"
                             />

@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const currentMenu = history[history.length - 1];
     // console.log(history);
@@ -26,7 +26,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     data={item}
                     onClick={() => {
                         if (isParent) {
-                            setHistory((prev) => console.log([...prev, item.children]));
+                            setHistory((prev) => [...prev, item.children]);
                         } else {
                             onChange(item);
                         }
@@ -41,6 +41,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             interactive
             delay={[0, 800]}
             offset={[12, 8]}
+            hideOnClick={hideOnClick}
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -53,7 +54,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
