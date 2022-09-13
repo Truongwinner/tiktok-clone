@@ -1,6 +1,6 @@
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
-import { HeaderOnlyDefault } from '~/components/Layout';
+import { HeaderOnlyDefault } from '~/layouts';
 
 import Home from '~/pages/Home';
 import Following from '~/pages/Following';
@@ -13,12 +13,12 @@ import Feedback from '~/pages/Feedback';
 const publicRoutes = [
     // mảng này là nơi mà Dev sẽ tự do định nghĩa các chức năng bằng cách thêm các key vào Object
     // tương ứng
-    { path: routesConfig.home, component: Home },
-    { path: routesConfig.following, component: Following },
-    { path: routesConfig.profile, component: Profile },
-    { path: routesConfig.upload, component: Upload, layout: HeaderOnlyDefault },
-    { path: routesConfig.search, component: Search, layout: null },
-    { path: routesConfig.feedback, component: Feedback, layout: null },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.following, component: Following },
+    { path: config.routes.profile, component: Profile },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnlyDefault },
+    { path: config.routes.search, component: Search, layout: null },
+    { path: config.routes.feedback, component: Feedback, layout: null },
 ];
 
 // Route này quản lý các trang cần phải đăng nhập vẫn truy cập được. Nếu Click vào thì sẽ bị điều hướng đến trang đăng ký

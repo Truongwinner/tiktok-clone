@@ -22,7 +22,7 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import { MessageIcon, UploadIcon, InboxIcon } from '~/components/icons';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 // Tham khảo cách dùng classNames.bind(style) ở đường dẫn bên dưới
 //https://www.tabnine.com/code/javascript/functions/classnames/ClassNamesBind/bind
@@ -98,7 +98,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home}>
+                <Link to={config.routes.home}>
                     <div className={cx('logo')}>
                         <img src={images.logo} alt={'tiktok'} />
                     </div>
@@ -144,7 +144,7 @@ function Header() {
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/be22b8593ea95c8835d47f4b5309ec16~c5_100x100.jpeg?x-expires=1662480000&x-signature=uViEUoKjwEpgmGP1jk5jnRXtln0%3D"
                                 alt="Nguyen Van A"
-                                fallback="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ae52c1bfaab10cd9d693f9de33e1e60a~c5_100x100.jpeg?x-expires=1662771600&x-signature=vsm8jUmukGYcxko7hZrOJSUxPEE%3D"
+                                fallback="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ae52c1bfaab10cd9d693f9de33e1e60a~c5_100x100.jpeg?x-expires=1663167600&x-signature=msDCFzHTAonARNjXHuLPObj1rDI%3D"
                             />
                         ) : (
                             <button className={cx('more-btn')}>

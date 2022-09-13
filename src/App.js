@@ -1,7 +1,7 @@
 import { Fragment } from 'react'; // Fragment là thẻ chứa rỗng có sẵn trong react dùng để ôm các khối mã mà không làm sinh ra thẻ tag không mong muốn
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from '~/routes';
-import { DefaultLayout } from './components/Layout';
+import DefaultLayout from '~/layouts';
 
 function App() {
     return (
