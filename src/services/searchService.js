@@ -11,5 +11,7 @@ export const search = async (q, type = 'less') => {
         return res.data;
         // encodeURIComponent(searchValue) dùng để mã hóa ký tự do người dùng nhập vào tránh trùng các ký tự như
         // '&', '=' hoặc '?' gây lỗi cho chuỗi ulr API (Query Parameter).
-    } catch (error) {}
+    } catch (error) {
+        console.log(error);
+    }
 };

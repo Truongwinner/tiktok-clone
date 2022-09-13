@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,13 +31,13 @@ function Search() {
         }
 
         const fetchApi = async () => {
-            setLoading(false);
+            setLoading(true);
             const result = await searchService.search(debounced);
             setSearchResult(result);
             setLoading(false);
         };
         fetchApi();
-        setLoading(true);
+        // setLoading(true);
 
         // Dùng axios để thay thế cho fetch. Link tham khảo (https://github.com/axios/axios)
     }, [debounced]);
