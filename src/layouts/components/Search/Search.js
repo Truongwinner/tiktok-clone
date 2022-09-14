@@ -17,22 +17,26 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    // debounce() là kỹ thuật buộc một hàm phải đợi một khoảng thời gian nhất định trước khi thực thi.
+    // Trong khoản thời gian đợi, mọi tác động sẽ đều bị bỏ qua và chỉ nhận duy nhất 1 hành động diễn ra
+    // trong thời gian chúng ta định trước.
+
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]); // Để khi người dùng xóa hết ký tự ở ô search thì không hiển thị KQ tìm kiếm nữa
             return;
         }
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchService.search(debounced);
+            const result = await searchService.search(debouncedValue);
             setSearchResult(result);
             setLoading(false);
         };
@@ -40,7 +44,7 @@ function Search() {
         // setLoading(true);
 
         // Dùng axios để thay thế cho fetch. Link tham khảo (https://github.com/axios/axios)
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchValue('');
