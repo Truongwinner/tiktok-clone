@@ -8,6 +8,7 @@ import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
 import Feedback from '~/pages/Feedback';
+import Live from '~/pages/Live';
 
 // Route này quản lý các trang không cần đăng nhập vẫn truy cập được
 const publicRoutes = [
@@ -15,6 +16,7 @@ const publicRoutes = [
     // tương ứng
     { path: config.routes.home, component: Home },
     { path: config.routes.following, component: Following },
+    { path: config.routes.live, component: Live },
     { path: config.routes.profile, component: Profile },
     { path: config.routes.upload, component: Upload, layout: HeaderOnlyDefault },
     { path: config.routes.search, component: Search, layout: null },

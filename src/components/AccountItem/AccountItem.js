@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'; // Thư viện giúp kiểm tra kiểu dữ liệu của các Props có đúng hay không để fix lỗi kịp thời
-import classNames from 'classnames/bind';
+import classNames from 'classnames/bind'; // Thư viện classnames tham khảo https://github.com/JedWatson/classnames
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
